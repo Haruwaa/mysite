@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>
+About
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="static\style1.css">
+
+
+</head>
+<body>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+  <img src="{{ url_for('static', filename='image/SHS.png')}}" alt="logo">
+
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">HOME</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              TRACKS
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="/academictrack">ACADEMIC</a></li>
+              <li><a class="dropdown-item" href="/techvoc">TVL</a></li>
+
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              STRANDS
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="/stem">STEM</a></li>
+              <li><a class="dropdown-item" href="/abm">ABM</a></li>
+              <li><a class="dropdown-item" href="/humss">HUMSS</a></li>
+              <li><a class="dropdown-item" href="/gas">GAS</a></li>
+              <li><a class="dropdown-item" href="/ict">ICT</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/about">ABOUT US</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="stars"></div>
+  <div id="stars2"></div>
+  <div id="stars3"></div>
+  <div class="container back-container txtt">
+    <h1 class="hello"><strong>About GOseniorhigh
+    </strong></h1>
+   </div>
+
+   <div class="container txtt">
+    <p class="abtpara">  GOseniorhigh is a website that tests user's personality, interests and characteristics to
+        recommend senior highschool strand for the user who take the test. GOseniorhigh collaborate with other user
+    and recommend strand based on their behavior similarity</p>
+   </div>
+<div class=" container front-container pc1">
+    <h1></h1>
+</div>
+
+   <div class="container back-container txtt">
+    <h1 class="hello"><strong>Our start
+    </strong></h1>
+   </div>
+   <div class="container txtt">
+    <p class="abtpara">  GOseniorhigh was developed by a group of computer science
+            students of Laguna State Polytechnic University and aims to help undecided upcoming senior highschool
+            students to choose their career track by evaluating their personality and interest in a test.
+        </p>
+   </div>
+
+
+
+
+
+</body>
+
+</html>

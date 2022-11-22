@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie-edge">
+
+    <title>Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="static\style1.css">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">  <div class="logo">
+      <img src="{{ url_for('static', filename='image/SHS.png')}}" alt="logo">
+      </div></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">HOME</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              TRACKS
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="/academictrack">ACADEMIC</a></li>
+              <li><a class="dropdown-item" href="/techvoc">TECHNICAL VOCATIONAL</a></li>
+
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              STRANDS
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="/stem">STEM</a></li>
+              <li><a class="dropdown-item" href="/abm">ABM</a></li>
+              <li><a class="dropdown-item" href="/humss">HUMSS</a></li>
+              <li><a class="dropdown-item" href="/gas">GAS</a></li>
+              <li><a class="dropdown-item" href="/ict">ICT</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/about">ABOUT US</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+      <div class="container back-container inf ">
+        <h2> Let us have a quick assessment! </h2>
+        <h2> Are you ready?</h2>
+      </div>
+
+      <div id="stars"></div>
+      <div id="stars2"></div>
+      <div id="stars3"></div>
+      <section id='display'>
+        <div class="container front-container txtt">
+          <h3>Enter 4 digit random number </h3>
+          <form action="/check/{{[0]}}" id="login" method="post">
+              <label ></label>
+              <input type="text" name="uID" id="id"  autocomplete="off" required>
+              <input type="submit" id="sub" value="Enter" class="btn btn-outline-light" disabled="disabled">
+              <script>login.addEventListener('input', () => {
+                if(id.value.length > 3 && id.value.length < 5 ){
+                  sub.removeAttribute('disabled');
+
+                }
+                else{
+                  sub.setAttribute('disabled','disabled');
+                }
+              });
+              </script>
+          </form>
+   <div class="message">
+
+            {% with messages = get_flashed_messages(category_filter=["success"]) %}
+                {% for message in messages %}
+                    <h3>{{ message }}</h3>
+                {% endfor %}
+            {% endwith %}
+          </div>
+
+
+
+            </div>
+
+
+            <div class="container front-container txtt">
+
+
+
+              <form action="/forward/{{[0]}}" id="logid" method="post">
+
+              <h2>You have an Interest in Computer Servicing</h2>
+              <input type="hidden" name="queID" value="1">
+
+
+              <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat" id="btnradio1" value="5.0"><label for="btnradio1">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat" id="btnradio2" value="4.0"><label for="btnradio2">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat" id="btnradio3" value="3.0"><label for="btnradio3">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat" id="btnradio4" value="2.0"><label for="btnradio4">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat" id="btnradio5" value="1.0"><label for="btnradio5">Strongly Disgree</label> </div>
+
+
+            </div>
+
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> You are interested in social relationship</h2>
+              <input type="hidden" name="queIDa" value="2">
+
+              <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat2" id="btnradio6" value="5.0"><label for="btnradio6">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat2" id="btnradio7" value="4.0"><label for="btnradio7">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat2" id="btnradio8" value="3.0"><label for="btnradio8">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat2" id="btnradio9" value="2.0"><label for="btnradio9">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat2" id="btnradio10" value="1.0"><label for="btnradio10">Strongly Disgree</label> </div>
+
+
+            </div>
+
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> You prefer general education lessons</h2>
+              <input type="hidden" name="queIDb" value="3">
+
+              <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat3" id="btnradio11" value="5.0"><label for="btnradio11">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat3" id="btnradio12" value="4.0"><label for="btnradio12">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat3" id="btnradio13" value="3.0"><label for="btnradio13">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat3" id="btnradio14" value="2.0"><label for="btnradio14">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat3" id="btnradio15" value="1.0"><label for="btnradio15">Strongly Disgree</label> </div>
+
+
+            </div>
+
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> Management is your skill</h2>
+              <input type="hidden" name="queIDc" value="4">
+
+             <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat4" id="btnradio16" value="5.0"><label for="btnradio16">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat4" id="btnradio17" value="4.0"><label for="btnradio17">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat4" id="btnradio18" value="3.0"><label for="btnradio18">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat4" id="btnradio19" value="2.0"><label for="btnradio19">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat4" id="btnradio20" value="1.0"><label for="btnradio20">Strongly Disgree</label> </div>
+
+
+            </div>
+
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> Business and finance makes you interested</h2>
+              <input type="hidden" name="queIDd" value="5">
+
+              <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat5" id="btnradio21" value="5.0"><label for="btnradio21">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat5" id="btnradio22" value="4.0"><label for="btnradio22">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat5" id="btnradio23" value="3.0"><label for="btnradio23">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat5" id="btnradio24" value="2.0"><label for="btnradio24">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat5" id="btnradio25" value="1.0"><label for="btnradio25">Strongly Disgree</label> </div>
+
+
+            </div>
+
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> You are good in mathematics subjects</h2>
+              <input type="hidden" name="queIDe" value="6">
+
+              <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat6" id="btnradio26" value="5.0"><label for="btnradio26">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat6" id="btnradio27" value="3.0"><label for="btnradio27">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat6" id="btnradio28" value="3.0"><label for="btnradio28">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat6" id="btnradio29" value="2.0"><label for="btnradio29">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat6" id="btnradio30" value="1.0"><label for="btnradio30">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> You enjoy budgeting money and making financial plans</h2>
+              <input type="hidden" name="queIDf" value="7">
+
+             <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat7" id="btnradio31" value="5.0"><label for="btnradio31">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat7" id="btnradio32" value="4.0"><label for="btnradio32">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat7" id="btnradio33" value="3.0"><label for="btnradio33">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat7" id="btnradio34" value="2.0"><label for="btnradio34">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat7" id="btnradio35" value="1.0"><label for="btnradio35">Strongly Disgree</label> </div>
+
+
+            </div>
+
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> You are drawn to lessons that focus on technology</h2>
+              <input type="hidden" name="queIDg" value="8">
+
+             <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat8" id="btnradio36" value="5.0"><label for="btnradio36">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat8" id="btnradio37" value="4.0"><label for="btnradio37">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat8" id="btnradio38" value="3.0"><label for="btnradio38">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat8" id="btnradio39" value="2.0"><label for="btnradio39">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat8" id="btnradio40" value="1.0"><label for="btnradio40">Strongly Disgree</label> </div>
+
+
+            </div>
+
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> You enjoy working on scientific studies of human society</h2>
+              <input type="hidden" name="queIDh" value="9">
+
+              <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat9" id="btnradio41" value="5.0"><label for="btnradio41">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat9" id="btnradio42" value="4.0"><label for="btnradio42">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat9" id="btnradio43" value="3.0"><label for="btnradio43">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat9" id="btnradio44" value="2.0"><label for="btnradio44">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat9" id="btnradio45" value="1.0"><label for="btnradio45">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> You are not yet certain of a particular career</h2>
+              <input type="hidden" name="queIDi" value="10">
+
+              <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat10" id="btnradio46" value="5.0"><label for="btnradio46">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat10" id="btnradio47" value="4.0"><label for="btnradio47">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat10" id="btnradio48" value="3.0"><label for="btnradio48">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat10" id="btnradio49" value="2.0"><label for="btnradio49">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat10" id="btnradio50" value="1.0"><label for="btnradio50">Strongly Disgree</label> </div>
+
+
+            </div>
+
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> You have an interest in creating applications and websites</h2>
+              <input type="hidden" name="queIDj" value="11">
+
+               <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat11" id="btnradio51" value="5.0"><label for="btnradio51">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat11" id="btnradio52" value="4.0"><label for="btnradio52">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat11" id="btnradio53" value="3.0"><label for="btnradio53">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat11" id="btnradio54" value="2.0"><label for="btnradio54">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat11" id="btnradio55" value="1.0"><label for="btnradio55">Strongly Disgree</label> </div>
+
+
+            </div>
+
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> Graphic designing and digital things is your passion </h2>
+              <input type="hidden" name="queIDk" value="12">
+
+             <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat12" id="btnradio56" value="5.0"><label for="btnradio56">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat12" id="btnradio57" value="4.0"><label for="btnradio57">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat12" id="btnradio58" value="3.0"><label for="btnradio58">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat12" id="btnradio59" value="2.0"><label for="btnradio59">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat12" id="btnradio60" value="1.0"><label for="btnradio60">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> You enjoy learning new software and hardware-related information  </h2>
+              <input type="hidden" name="queIDl" value="13">
+
+              <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat13" id="btnradio61" value="5.0"><label for="btnradio61">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat13" id="btnradio62" value="4.0"><label for="btnradio62">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat13" id="btnradio63" value="3.0"><label for="btnradio63">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat13" id="btnradio64" value="2.0"><label for="btnradio64">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat13" id="btnradio65" value="1.0"><label for="btnradio65">Strongly Disgree</label> </div>
+
+
+            </div>
+
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> You're passionate in interacting with people</h2>
+              <input type="hidden" name="queIDm" value="14">
+
+               <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat14" id="btnradio66" value="5.0"><label for="btnradio66">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat14" id="btnradio67" value="4.0"><label for="btnradio67">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat14" id="btnradio68" value="3.0"><label for="btnradio68">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat14" id="btnradio69" value="2.0"><label for="btnradio69">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat14" id="btnradio70" value="1.0"><label for="btnradio70">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> You enjoy developing maturity and understanding</h2>
+              <input type="hidden" name="queIDn" value="15">
+
+              <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat15" id="btnradio71" value="5.0"><label for="btnradio71">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat15" id="btnradio72" value="4.0"><label for="btnradio72">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat15" id="btnradio73" value="3.0"><label for="btnradio73">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat15" id="btnradio74" value="2.0"><label for="btnradio75">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat15" id="btnradio75" value="1.0"><label for="btnradio75">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> You adore philosophy and discovering new cultures</h2>
+              <input type="hidden" name="queIDo" value="16">
+
+              <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat16" id="btnradio76" value="5.0"><label for="btnradio76">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat16" id="btnradio77" value="4.0"><label for="btnradio77">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat16" id="btnradio78" value="3.0"><label for="btnradio78">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat16" id="btnradio79" value="2.0"><label for="btnradio79">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat16" id="btnradio80" value="1.0"><label for="btnradio80">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> Instead of focusing on one subject, you like to learn about many topics </h2>
+              <input type="hidden" name="queIDp" value="17">
+
+              <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat17" id="btnradio81" value="5.0"><label for="btnradio81">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat17" id="btnradio82" value="4.0"><label for="btnradio82">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat17" id="btnradio83" value="3.0"><label for="btnradio83">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat17" id="btnradio84" value="2.0"><label for="btnradio84">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat17" id="btnradio85" value="1.0"><label for="btnradio85">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> You usually learn and exploring new issues in greater detail </h2>
+              <input type="hidden" name="queIDq" value="18">
+
+             <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat18" id="btnradio86" value="5.0"><label for="btnradio86">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat18" id="btnradio87" value="4.0"><label for="btnradio87">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat18" id="btnradio88" value="3.0"><label for="btnradio88">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat18" id="btnradio89" value="2.0"><label for="btnradio89">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat18" id="btnradio90" value="1.0"><label for="btnradio90">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> Before making a decision, you still want to better understand other options. </h2>
+              <input type="hidden" name="queIDr" value="19">
+
+              <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat19" id="btnradio91" value="5.0"><label for="btnradio91">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat19" id="btnradio92" value="4.0"><label for="btnradio92">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat19" id="btnradio93" value="3.0"><label for="btnradio93">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat19" id="btnradio94" value="2.0"><label for="btnradio94">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat19" id="btnradio95" value="1.0"><label for="btnradio95">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> You simply love accounting and problem-solving </h2>
+              <input type="hidden" name="queIDs" value="20">
+
+              <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat20" id="btnradio96" value="5.0"><label for="btnradio96">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat20" id="btnradio97" value="4.0"><label for="btnradio97">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat20" id="btnradio98" value="3.0"><label for="btnradio98">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat20" id="btnradio99" value="2.0"><label for="btnradio99">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat20" id="btnradio100" value="1.0"><label for="btnradio100">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> Science and the Earth captures your enthusiasm </h2>
+              <input type="hidden" name="queIDt" value="21">
+
+             <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat21" id="btnradio101" value="5.0"><label for="btnradio101">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat21" id="btnradio102" value="4.0"><label for="btnradio102">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat21" id="btnradio103" value="3.0"><label for="btnradio103">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat21" id="btnradio104" value="2.0"><label for="btnradio104">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat21" id="btnradio105" value="1.0"><label for="btnradio105">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> You imagined yourself as a scientist, studying natural phenomena on Earth</h2>
+              <input type="hidden" name="queIDu" value="22">
+
+               <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat22" id="btnradio106" value="5.0"><label for="btnradio106">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat22" id="btnradio107" value="4.0"><label for="btnradio107">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat22" id="btnradio108" value="3.0"><label for="btnradio108">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat22" id="btnradio109" value="2.0"><label for="btnradio109">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat22" id="btnradio110" value="1.0"><label for="btnradio110">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2>You enjoy solving complex mathematical problems </h2>
+              <input type="hidden" name="queIDv" value="23">
+
+              <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat23" id="btnradio111" value="5.0"><label for="btnradio111">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat23" id="btnradio112" value="4.0"><label for="btnradio112">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat23" id="btnradio113" value="3.0"><label for="btnradio113">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat23" id="btnradio114" value="2.0"><label for="btnradio114">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat23" id="btnradio115" value="1.0"><label for="btnradio115">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2>You wish to experience engineering classes </h2>
+              <input type="hidden" name="queIDw" value="24">
+
+                            <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat24" id="btnradio116" value="5.0"><label for="btnradio116">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat24" id="btnradio117" value="4.0"><label for="btnradio117">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat24" id="btnradio118" value="3.0"><label for="btnradio118">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat24" id="btnradio119" value="2.0"><label for="btnradio119">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat24" id="btnradio120" value="1.0"><label for="btnradio120">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+
+              <h2> You are interested in learning physics such as forces and gravity </h2>
+              <input type="hidden" name="queIDx" value="25">
+
+                      <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat25" id="btnradio121" value="5.0"><label for="btnradio121">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat25" id="btnradio122" value="4.0"><label for="btnradio122">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat25" id="btnradio123" value="3.0"><label for="btnradio123">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat25" id="btnradio124" value="2.0"><label for="btnradio124">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat25" id="btnradio125" value="1.0"><label for="btnradio125">Strongly Disgree</label> </div>
+
+
+            </div>
+
+
+            </div>
+
+
+             <div class="container front-container txtt">
+              <h2> You're interested in learning how to run your own business</h2>
+              <input type="hidden" name="queIDx1" value="26">
+
+                      <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat26" id="btnradio126" value="5.0"><label for="btnradio126">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat26" id="btnradio127" value="4.0"><label for="btnradio127">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat26" id="btnradio128" value="3.0"><label for="btnradio128">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat26" id="btnradio129" value="2.0"><label for="btnradio129">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat26" id="btnradio130" value="1.0"><label for="btnradio130">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+              <h2> You enjoy performing asset analyses, comprehending all aspects of financial circumstances, interpreting different profitability, and creating audit accounts. </h2>
+              <input type="hidden" name="queIDx2" value="27">
+
+                      <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat27" id="btnradio131" value="5.0"><label for="btnradio131">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat27" id="btnradio132" value="4.0"><label for="btnradio132">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat27" id="btnradio133" value="3.0"><label for="btnradio133">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat27" id="btnradio134" value="2.0"><label for="btnradio134">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat27" id="btnradio135" value="1.0"><label for="btnradio135">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+              <h2> You like to take risks and offer creative, even quirky ideas </h2>
+              <input type="hidden" name="queIDx3" value="28">
+
+                      <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat28" id="btnradio136" value="5.0"><label for="btnradio136">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat28" id="btnradio137" value="4.0"><label for="btnradio137">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat28" id="btnradio138" value="3.0"><label for="btnradio138">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat28" id="btnradio139" value="2.0"><label for="btnradio139">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat28" id="btnradio140" value="1.0"><label for="btnradio140">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+             <div class="container front-container txtt">
+              <h2> You have a passion for creating spaces that develop critical thinking, creativity, communication, and cooperation </h2>
+              <input type="hidden" name="queIDx4" value="29">
+
+                      <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat29" id="btnradio141" value="5.0"><label for="btnradio141">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat29" id="btnradio142" value="4.0"><label for="btnradio142">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat29" id="btnradio143" value="3.0"><label for="btnradio143">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat29" id="btnradio144" value="2.0"><label for="btnradio144">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat29" id="btnradio145" value="1.0"><label for="btnradio145">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+              <div class="container front-container txtt">
+              <h2> You love to enjoy reading and composing stories for books </h2>
+              <input type="hidden" name="queIDx5" value="30">
+
+                      <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat30" id="btnradio146" value="5.0"><label for="btnradio146">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat30" id="btnradio147" value="4.0"><label for="btnradio147">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat30" id="btnradio148" value="3.0"><label for="btnradio148">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat30" id="btnradio149" value="2.0"><label for="btnradio149">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat30" id="btnradio150" value="1.0"><label for="btnradio150">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+              <div class="container front-container txtt">
+              <h2> You perform better in public speaking and like debating. </h2>
+              <input type="hidden" name="queIDx6" value="31">
+
+                      <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat31" id="btnradio151" value="5.0"><label for="btnradio151">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat31" id="btnradio152" value="4.0"><label for="btnradio152">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat31" id="btnradio153" value="3.0"><label for="btnradio153">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat31" id="btnradio154" value="2.0"><label for="btnradio154">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat31" id="btnradio155" value="1.0"><label for="btnradio155">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+              <h2>You have/want to have the ability to understand and operate a wide range of technology software </h2>
+              <input type="hidden" name="queIDx7" value="32">
+
+                      <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat32" id="btnradio156" value="5.0"><label for="btnradio156">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat32" id="btnradio157" value="4.0"><label for="btnradio157">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat32" id="btnradio158" value="3.0"><label for="btnradio158">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat32" id="btnradio159" value="2.0"><label for="btnradio159">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat32" id="btnradio160" value="1.0"><label for="btnradio160">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+            <div class="container front-container txtt">
+              <h2> You enjoy gathering, processing and presenting data and build information </h2>
+              <input type="hidden" name="queIDx8" value="33">
+
+                      <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat33" id="btnradio161" value="5.0"><label for="btnradio161">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat33" id="btnradio162" value="4.0"><label for="btnradio162">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat33" id="btnradio163" value="3.0"><label for="btnradio163">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat33" id="btnradio164" value="2.0"><label for="btnradio164">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat33" id="btnradio165" value="1.0"><label for="btnradio165">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+            <div class="container front-container txtt">
+              <h2> You are open to more opportunities </h2>
+              <input type="hidden" name="queIDx9" value="34">
+
+                      <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat34" id="btnradio166" value="5.0"><label for="btnradio166">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat34" id="btnradio167" value="4.0"><label for="btnradio167">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat34" id="btnradio168" value="3.0"><label for="btnradio168">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat34" id="btnradio169" value="2.0"><label for="btnradio169">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat34" id="btnradio170" value="1.0"><label for="btnradio170">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+
+              <div class="container front-container txtt">
+              <h2> You give yourself the chance to weigh your options first  </h2>
+              <input type="hidden" name="queIDx10" value="35">
+
+                      <div class="radio-list" >
+                <div class="radio-item" ><input type="radio" name="rat35" id="btnradio171" value="5.0"><label for="btnradio171">Strongly Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat35" id="btnradio172" value="4.0"><label for="btnradio172">Agree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat35" id="btnradio173" value="3.0"><label for="btnradio173">neutral</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat35" id="btnradio174" value="2.0"><label for="btnradio174">Disgree</label> </div>
+                <div class="radio-item" ><input type="radio" name="rat35" id="btnradio175" value="1.0"><label for="btnradio175">Strongly Disgree</label> </div>
+
+
+            </div>
+            </div>
+
+
+
+            <div class="container back-container txtt">
+            <div class="buttons">
+              <input type="submit" value="SUBMIT"  id="send" class="btn btn01" >
+            </div>
+
+
+
+
+            </form>
+
+
+
+            </div>
+
+      </section>
+
+
+
+</body>
+<footer>
+  <div class=" footer-container">
+        <p>© Thesis 2022</p>
+  </div>
+</footer>
+</html>
